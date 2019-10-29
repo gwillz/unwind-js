@@ -1,0 +1,30 @@
+{
+  "name": "unwind-js-maps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "tsc",
+    "dev": "ts-node src/index.ts",
+    "bin": "node dist/index.js"
+  },
+  "author": "Gwilyn Saunders",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "source-map": "^0.7.3",
+    "source-map-support": "^0.5.15"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "bin": {
+    "unwind-js": "dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.7",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.1-rc"
+  }
+}
