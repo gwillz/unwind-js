@@ -19,7 +19,7 @@ function help(log = console.log) {
 
 
 function parseMode(mode: string) {
-    const match = /-(?:manifest|map)/.exec(mode);
+    const match = /-(manifest|map)/.exec(mode);
     if (!match) return null;
     
     return match[1] as Mode;
