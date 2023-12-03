@@ -32,7 +32,7 @@ export async function readJson(jsonPath: string): Promise<any> {
 
 
 /**
- * No type checking, just 
+ * No type checking, just
  */
 export function checkPresent(json: any, ...fields: string[]) {
     for (let field of fields) {
@@ -50,42 +50,42 @@ export function checkPresent(json: any, ...fields: string[]) {
 export function checkType(map: any, field: any, type: Types) {
     const item = map[field];
     const actual = typeof item;
-    
+
     if (actual === "undefined") {
         throw new Error(`Expecting field "${field}"`);
     }
-    
+
     else if (actual === "object") {
         // object is object, hurrah.
         if (type === "object") {
             return;
         }
-        
+
         // Must be an array now.
         if (item.constructor.name !== "Array") {
             toss();
         }
-        
+
         // Could be a generic array.
         if (type === "array") {
             return;
         }
-        
+
         // Explicit array types are a little expensive.
         const [_, subType] = /(\w+)\[\]/.exec(type + "")!;
-        
+
         for (let subItem of item) {
             if (typeof subItem !== subType) {
                 toss();
             }
         }
     }
-    
+
     // Standard type checks.
     else if (actual !== type) {
         toss();
     }
-    
+
     function toss() {
         throw new Error(`Expecting type "${type}" at "${field}"`);
     }
@@ -93,9 +93,9 @@ export function checkType(map: any, field: any, type: Types) {
 
 
 export function checkNumber(map: any, field: any) {
-    
+
     const item = parseFloat(map[field]);
-    
+
     // Test for NaN.
     if (item !== item) {
         throw new Error(`Expected number at "${field}"`);
